@@ -37,7 +37,7 @@ module.exports = async function handler(req, res) {
 
   const token = process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN;
   if (!token) return send(res, 503, {error:'AI service is not configured yet. Enable Vercel AI Gateway or set AI_GATEWAY_API_KEY in the server environment.'});
-  const model = process.env.AI_GATEWAY_MODEL || 'openai/gpt-5.5';
+  const model = process.env.AI_GATEWAY_MODEL || 'alibaba/qwen-3-14b';
   try {
     const upstream = await fetch('https://ai-gateway.vercel.sh/v1/chat/completions', {
       method:'POST',
